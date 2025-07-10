@@ -9,7 +9,6 @@ import com.example.eventmanagement.model.response.EventResponse;
 import com.example.eventmanagement.repository.EventRepository;
 import com.example.eventmanagement.service.EventService;
 import java.util.List;
-import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
