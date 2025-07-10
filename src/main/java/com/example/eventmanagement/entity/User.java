@@ -46,21 +46,24 @@ public class User {
   )
   private Set<Role> roles;
 
+  @ManyToMany(mappedBy = "participants")
+  private Set<Event> registeredEvents;
+
   @Column(name = "created_at",  updatable = false)
-  private LocalDateTime createAt;
+  private LocalDateTime createdAt;
 
   @Column(name = "updated_at")
-  private LocalDateTime updateAt;
+  private LocalDateTime updatedAt;
 
   @PrePersist
   protected void prePersist() {
-    this.createAt = LocalDateTime.now();
-    this.updateAt = LocalDateTime.now();
+    this.createdAt = LocalDateTime.now();
+    this.updatedAt = LocalDateTime.now();
   }
 
   @PreUpdate
   protected void preUpdate() {
-    this.updateAt = LocalDateTime.now();
+    this.updatedAt = LocalDateTime.now();
   }
 
 }

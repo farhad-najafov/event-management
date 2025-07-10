@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: 5
+      author: najafovfarhad
+      changes:
+        - createTable:
+            tableName: users_events
+            columns:
+              - column:
+                  name: user_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: event_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+        - addPrimaryKey:
+            tableName: users_events
+            columnNames: user_id, event_id
+            constraintName: pk_users_events
+        - addForeignKeyConstraint:
+            baseTableName: users_events
+            baseColumnNames: user_id
+            referencedTableName: users
+            referencedColumnNames: id
+            onDelete: CASCADE
+            constraintName: fk_users_events_user
+        - addForeignKeyConstraint:
+            baseTableName: users_events
+            baseColumnNames: event_id
+            referencedTableName: events
+            referencedColumnNames: id
+            onDelete: CASCADE
+            constraintName: fk_users_events_event
